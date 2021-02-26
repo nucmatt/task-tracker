@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     let today = new Date();
@@ -5,7 +6,7 @@ const Footer = () => {
     return (
         <footer>
             <p>Copyright &copy; {year}</p>
-            <a href="/about">About</a>
+            <Link to="/about">About</Link>
         </footer>
     )
 }
