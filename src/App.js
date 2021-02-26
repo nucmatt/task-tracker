@@ -83,20 +83,36 @@ function App() {
 		);
 	};
 	return (
-		<div className='container'>
-			<Header
-				onAdd={() => setShowAddTask(!showAddTask)}
-				showAdd={showAddTask}
-			/>
-			{/* double ampersand is a shortform ternary operator if there is no 'else' to the ternary if*/}
-			{showAddTask && <AddTask onAdd={addTask} />}
-			{tasks.length > 0 ? (
-				<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
-			) : (
-				'No Tasks'
-			)}
-      <Footer />
-		</div>
+		<Router>
+			<div className='container'>
+				<Header
+					onAdd={() => setShowAddTask(!showAddTask)}
+					showAdd={showAddTask}
+				/>
+
+				<Route
+					path='/'
+					exact
+					render={(props) => (
+						<>
+							{/* double ampersand is a shortform ternary operator if there is no 'else' to the ternary if*/}
+							{showAddTask && <AddTask onAdd={addTask} />}
+							{tasks.length > 0 ? (
+								<Tasks
+									tasks={tasks}
+									onDelete={deleteTask}
+									onToggle={toggleReminder}
+								/>
+							) : (
+								'No Tasks'
+							)}
+						</>
+					)}
+				/>
+				<Route path='/about' component={About}></Route>
+				<Footer />
+			</div>
+		</Router>
 	);
 }
 
