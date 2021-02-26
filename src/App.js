@@ -24,6 +24,14 @@ const fetchTasks = async () => {
   return data
 };
 
+// Fetch single task
+const fetchTask = async (id) => {
+  const res = await fetch(`http://localhost:5000/tasks/${id}`);
+  const data = await res.json();
+
+  return data
+};
+
 // Add Task
 const addTask = async (task) => {
 // json-server automatically creates ids so below code is no longer needed
